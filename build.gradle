@@ -35,9 +35,16 @@ configurations {
 }
 
 dependencies {
-    api "io.github.openfeign:feign-core:${property('feign.version')}"
+    api "com.google.code.gson:gson:${property('gson.version')}"
+    api "org.mybatis:mybatis:${property('mybatis.version')}"
+//    api 'com.github.jneat:mybatis-types:0.5.1'
 
-    implementation "ru.oleg-cherednik.gson:gson-utils:${property('gson-utils.version')}"
+    testImplementation "org.mybatis:mybatis:${property('mybatis.version')}"
+
+    testImplementation 'org.postgresql:postgresql:42.2.1'
+//    api "io.github.openfeign:feign-core:${property('feign.version')}"
+
+//    implementation "ru.oleg-cherednik.gson:gson-utils:${property('gson-utils.version')}"
 
     testImplementation('org.testng:testng:7.4.0') {
         exclude group: 'junit', module: 'junit'
@@ -45,23 +52,23 @@ dependencies {
     }
 
 //    testImplementation 'ru.oleg-cherednik.utils.reflection:reflection-utils:1.0'
-    testImplementation "io.github.openfeign:feign-okhttp:${property('feign.version')}"
-    testImplementation "io.github.openfeign:feign-spring4:${property('feign.version')}"
-    testImplementation "io.github.openfeign:feign-jackson:${property('feign.version')}"
+//    testImplementation "io.github.openfeign:feign-okhttp:${property('feign.version')}"
+//    testImplementation "io.github.openfeign:feign-spring4:${property('feign.version')}"
+//    testImplementation "io.github.openfeign:feign-jackson:${property('feign.version')}"
 
     testImplementation "com.google.code.gson:gson:${property('gson.version')}"
-//    testImplementation 'org.assertj:assertj-core:3.20.2'
+    testImplementation 'org.assertj:assertj-core:3.20.2'
 //    testImplementation 'commons-io:commons-io:2.11.0'
 //    testImplementation 'org.mockito:mockito-core:3.11.2'
 
-    testImplementation('org.springframework.boot:spring-boot-starter-web:2.3.8.RELEASE') {
-        exclude group: 'org.junit.jupiter', module: 'junit-jupiter'
-    }
+//    testImplementation('org.springframework.boot:spring-boot-starter-web:2.3.8.RELEASE') {
+//        exclude group: 'org.junit.jupiter', module: 'junit-jupiter'
+//    }
 //    testImplementation 'org.springframework.boot:spring-boot-starter-json:2.3.8.RELEASE'
 
-    testImplementation('org.springframework.boot:spring-boot-starter-test:2.3.8.RELEASE') {
-        exclude group: 'org.junit.vintage'
-    }
+//    testImplementation('org.springframework.boot:spring-boot-starter-test:2.3.8.RELEASE') {
+//        exclude group: 'org.junit.vintage'
+//    }
 }
 
 jacocoTestReport {
