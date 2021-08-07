@@ -1,9 +1,12 @@
-package ru.olegcherednik.gson.mybatis;
+package ru.olegcherednik.gson.mybatis.app.mapper;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import ru.olegcherednik.gson.mybatis.app.model.JsonEntity;
 
+@Mapper
 public interface JsonMapper {
 
     JsonEntity get(@Param("id") long id);

@@ -1,4 +1,4 @@
-package ru.olegcherednik.gson.mybatis;
+package ru.olegcherednik.gson.mybatis.app.model;
 
 import com.google.gson.JsonElement;
 

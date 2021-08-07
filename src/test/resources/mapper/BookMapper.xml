@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ru.olegcherednik.gson.mybatis.app.mapper.BookMapper">
+    <resultMap id="BookMap" type="ru.olegcherednik.gson.mybatis.app.model.Book">
+        <constructor>
+            <arg column="id" javaType="_long"/>
+            <arg column="fileset_id" javaType="_long"/>
+            <arg column="file_uuid" javaType="java.util.UUID"/>
+        </constructor>
+    </resultMap>
+
+    <sql id="bookColumns">
+        uf.id,
+        uf.fileset_id,
+        uf.file_uuid,
+    </sql>
+
+</mapper>

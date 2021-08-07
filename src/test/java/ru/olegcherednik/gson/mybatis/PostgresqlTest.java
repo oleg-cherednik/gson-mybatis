@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.postgresql.ds.PGSimpleDataSource;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import ru.olegcherednik.gson.mybatis.app.mapper.JsonMapper;
+import ru.olegcherednik.gson.mybatis.app.model.JsonEntity;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -19,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Test
 public class PostgresqlTest extends JsonHandlersTestApi {
 
-    private static final String PG_URL = "jdbc:postgresql://jneat/jneat?user=jneat&password=jneat";
+    private static final String PG_URL = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres";
 
     private static final String PG_SQL = "/postgresql.sql";
 
@@ -42,7 +44,6 @@ public class PostgresqlTest extends JsonHandlersTestApi {
         return PARSER.parse(json);
     }
 
-    @Test
     public void test1InsertNulls() {
         try (SqlSession sess = sessionFactory.openSession()) {
             JsonMapper mapper = sess.getMapper(JsonMapper.class);
@@ -52,7 +53,6 @@ public class PostgresqlTest extends JsonHandlersTestApi {
         }
     }
 
-    @Test
     public void test2InsertValues() throws IOException {
         aNode = (JsonArray)readJson("[1,2,3,7,8]");
         oNode = (JsonObject)readJson("{a:12, b:12.12, c: \"some name\"}");
@@ -65,7 +65,6 @@ public class PostgresqlTest extends JsonHandlersTestApi {
         }
     }
 
-    @Test
     public void test3ReadNulls() {
         try (SqlSession sess = sessionFactory.openSession()) {
             JsonMapper mapper = sess.getMapper(JsonMapper.class);
@@ -79,7 +78,6 @@ public class PostgresqlTest extends JsonHandlersTestApi {
         }
     }
 
-    @Test
     public void test4ReadValues() {
         try (SqlSession sess = sessionFactory.openSession()) {
             JsonMapper mapper = sess.getMapper(JsonMapper.class);

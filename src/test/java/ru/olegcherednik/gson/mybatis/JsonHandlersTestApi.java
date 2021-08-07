@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.assertj.core.api.Assertions;
+import ru.olegcherednik.gson.mybatis.app.mapper.JsonMapper;
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -43,7 +44,7 @@ public abstract class JsonHandlersTestApi {
         TransactionFactory transactionFactory = new JdbcTransactionFactory();
         Environment environment = new Environment("jneat", transactionFactory, ds);
         Configuration configuration = new Configuration(environment);
-        configuration.getTypeHandlerRegistry().register("com.github.jneat.mybatis");
+        configuration.getTypeHandlerRegistry().register("ru.olegcherednik.gson.mybatis");
         configuration.addMapper(JsonMapper.class);
 
         return new SqlSessionFactoryBuilder().build(configuration);
